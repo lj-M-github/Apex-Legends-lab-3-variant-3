@@ -6,7 +6,6 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger('MealyInterpreter')
 
 # Decorators for input validation
-
 def arg_type(index, expected_type):
     def decorator(func):
         def wrapper(*args, **kwargs):

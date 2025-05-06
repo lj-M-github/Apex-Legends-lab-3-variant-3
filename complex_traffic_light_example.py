@@ -27,18 +27,18 @@ m.output_symbol('stop')     # red means “stop”
 m.set_initial('Green')
 
 # Define transitions
-m.transition('Green',  'timer', 'Yellow', 'caution')
-m.transition('Yellow', 'timer', 'Red',    'stop')
-m.transition('Red',    'timer', 'Green',  'go')
+m.transition('Green', 'timer', 'Yellow', 'caution')
+m.transition('Yellow', 'timer', 'Red', 'stop')
+m.transition('Red', 'timer', 'Green', 'go')
 
 # Simulate a series of timer events
 sequence = ['timer'] * 6
-outputs  = m.process(sequence)
+outputs = m.process(sequence)
 print("Inputs:   ", sequence)
 print("Outputs:  ", outputs)
 
 # Show visualizations
-dot   = m.visualize_dot()
+dot = m.visualize_dot()
 table = m.visualize_table()
 
 print("\nDOT representation:")
