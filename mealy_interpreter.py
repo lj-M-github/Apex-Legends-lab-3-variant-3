@@ -137,15 +137,3 @@ class MealyMachine:
         md = "\n".join(table)
         logger.debug("Table visualization generated")
         return md
-
-
-# Example usage (to be removed or placed in tests):
-# m = MealyMachine('Turnstile')
-# m.state('Locked').state('Unlocked')
-# m.input_symbol('coin').input_symbol('push')
-# m.output_symbol('unlock').output_symbol('alarm')
-# m.set_initial('Locked')
-# m.transition('Locked', 'coin', 'Unlocked', 'unlock')
-# m.transition('Unlocked', 'push', 'Locked', 'lock')
-# outputs = m.process(['coin', 'push'])
-# print(outputs)  # ['unlock', 'lock']
