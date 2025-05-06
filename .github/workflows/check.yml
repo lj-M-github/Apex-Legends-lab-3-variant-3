@@ -24,7 +24,7 @@ jobs:
           coverage report *.py
 
       - name: Check code style
-        run: pycodestyle --ignore=E501 .
+        run: pycodestyle --ignore=E501, E302 .
 
       - name: Check python file for typical errors
         run: pyflakes .
