@@ -1,68 +1,60 @@
-# Apex-Legends - lab 2 - variant 1
+# Apex-Legends - lab 3 - variant 3
 
-This project demonstrates the implementation of Immutable Unrolled
-Linked List in Python and explores the concept of immutable data
-structures and the unrolled linked list variation.
+This project implements an embedded Domain-Specific Language (eDSL) for defining Mealy machines, including state transitions, input/output handling, and visualization capabilities.
 
-## Project structure
+## Project Structure
 
-- `immutable_unrolled_list.py`
-  This file contains the implementation of the
-  `ImmutableUnrolledLinkedList` class and the `Node` class.
-  The `ImmutableUnrolledLinkedList` class provides a function-style
-  API for immutable operations.
+- `mealy_interpreter.py`  
+  Contains the core implementation of:
+  - `MealyMachine` class for state machine definition
+  - State/input/output symbol management
+  - Transition rules configuration
+  - Execution engine with logging
+  - GraphViz DOT and Markdown visualization
 
-- `immutable_unrolled_list_test.py`
-  This file contains unit tests for the `ImmutableUnrolledLinkedList`
-  implementation.
-  The tests verify the correctness of the API functions under various
-  scenarios and properties.
+- `test_mealy_interpreter.py`  
+  Contains comprehensive unit tests validating:
+  - State transition logic
+  - Error handling (undefined states/symbols)
+  - Input validation
+  - Visualization outputs
 
-## Features
+- `complex_traffic_light_example.py`  
+  Demonstrates a practical implementation of:
+  - Traffic light controller state machine
+  - Timer-based state transitions
+  - Visualization generation
 
-The following function-style API functions are implemented for the
-ImmutableUnrolledLinkedList (ul means unrolled_list):
+## Key Features
 
-- `cons(head_value, ul=None)`: Adds a new element to the beginning
-  (head) of the list, returning a new list.
-- `remove(ul, element)`: Returns a new list with the first occurrence
-  of the specified element removed.
-- `length(ul)`: Returns the number of elements in the list.
-- `member(ul, element)`: Checks if the list contains a specific
-  element and returns `True` or `False`.
-- `reverse(ul)`: Returns a new list with the elements in reversed order.
-- `intersection(ul1, ul2)`: Returns a new list containing the
-  intersection of elements from two lists (set-like behavior).
-- `to_list(ul)`: Converts the Immutable Unrolled Linked List into a
-  standard Python list.
-- `from_list(list, node_size)`: Creates a new Immutable Unrolled
-  Linked List from a standard Python list, with node size specified.
-- `find(ul, predicate)`: Finds the first element in the list that satisfies
-  the given predicate function and returns it.
-  (tuple(False, None) if not found or tuple(True, Optional[T])).
-- `filter(ul, predicate)`: Returns a new list containing only elements
-  that satisfy the given predicate function.
-- `map_list(ul, func)`: Returns a new list by applying the given function
-  to each element of the original list.
-- `reduce(ul, func, initial_value)`: Reduces the list to a single value
-  by applying the given function cumulatively to the list items.
-- `empty(node_size)`: Returns a new empty Immutable Unrolled Linked
-  List with a specified node size.
-- `concat(ul1, ul2)`: Returns a new list by concatenating two
-  Immutable Unrolled Linked Lists.
-- `iterator(ul)`: Returns an iterator that allows iterating over the
-  elements of the Immutable Unrolled Linked List.
-- `__iter__(self)`: Implements the iterator protocol, allowing direct
-  iteration over the Immutable Unrolled Linked List using `for...in`.
-- `__str__(self)`: Provides a string representation of the Immutable
-  Unrolled Linked List for easy printing and debugging.
-- `__eq__(self, other)`: Implements equality checking between two
-  Immutable Unrolled Linked Lists using the `==` operator.
+### Mealy Machine Definition
+- `state(name)` - Declare states
+- `input_symbol(symbol)` - Define valid input symbols
+- `output_symbol(symbol)` - Define output symbols
+- `set_initial(state)` - Set initial state
+- `transition(current_state, input, next_state, output)` - Create state transition rules
 
-This implementation emphasizes immutability, meaning that operations
-on the list do not modify the original list but instead return new lists
-with the desired changes. This approach is beneficial for concurrent
-programming and data integrity.
+### Execution & Validation
+- `process(inputs)` - Execute input sequence and generate outputs
+- Type checking via `@arg_type` decorators
+- Runtime validation of:
+  - Undefined states
+  - Missing transitions
+  - Invalid symbols
+
+### Visualization
+- `visualize_dot()` - Generate GraphViz DOT state diagrams
+- `visualize_table()` - Create Markdown transition tables
+- Example visualization outputs:
+  ```dot
+  digraph Mealy {
+    rankdir=LR;
+    label="TrafficLight";
+    Green [shape=doublecircle];
+    Green -> Yellow [label="timer/caution"];
+    Yellow -> Red [label="timer/stop"];
+    Red -> Green [label="timer/go"];
+  }
 
 ## Contribution
 
