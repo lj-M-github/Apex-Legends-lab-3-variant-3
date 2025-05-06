@@ -7,7 +7,6 @@ transitions, input/output handling, and visualization capabilities.
 ## Project Structure
 
 - `mealy_interpreter.py`  
-  Contains the core implementation of:
   - `MealyMachine` class for state machine definition
   - State/input/output symbol management
   - Transition rules configuration
@@ -15,14 +14,12 @@ transitions, input/output handling, and visualization capabilities.
   - GraphViz DOT and Markdown visualization
 
 - `test_mealy_interpreter.py`  
-  Contains comprehensive unit tests validating:
   - State transition logic
   - Error handling (undefined states/symbols)
   - Input validation
   - Visualization outputs
 
 - `complex_traffic_light_example.py`  
-  Demonstrates a practical implementation of:
   - Traffic light controller state machine
   - Timer-based state transitions
   - Visualization generation
@@ -33,7 +30,8 @@ transitions, input/output handling, and visualization capabilities.
 - `input_symbol(symbol)` - Define valid input symbols
 - `output_symbol(symbol)` - Define output symbols
 - `set_initial(state)` - Set initial state
-- `transition(current_state, input, next_state, output)` - Create state transition rules
+- `transition(current_state, input, next_state, output)`
+- Create state transition rules
 
 ## Execution & Validation
 
