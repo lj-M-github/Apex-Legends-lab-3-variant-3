@@ -5,6 +5,7 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('MealyInterpreter')
 
+
 # Decorators for input validation
 def arg_type(index, expected_type):
     def decorator(func):
