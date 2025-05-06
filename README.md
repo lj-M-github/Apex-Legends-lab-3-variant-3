@@ -1,6 +1,8 @@
 # Apex-Legends - lab 3 - variant 3
 
-This project implements an embedded Domain-Specific Language (eDSL) for defining Mealy machines, including state transitions, input/output handling, and visualization capabilities.
+This project implements an embedded Domain-Specific
+Language (eDSL) for defining Mealy machines, including state
+transitions, input/output handling, and visualization capabilities.
 
 ## Project Structure
 
@@ -25,16 +27,16 @@ This project implements an embedded Domain-Specific Language (eDSL) for defining
   - Timer-based state transitions
   - Visualization generation
 
-## Key Features
+## Mealy Machine Definition
 
-### Mealy Machine Definition
 - `state(name)` - Declare states
 - `input_symbol(symbol)` - Define valid input symbols
 - `output_symbol(symbol)` - Define output symbols
 - `set_initial(state)` - Set initial state
 - `transition(current_state, input, next_state, output)` - Create state transition rules
 
-### Execution & Validation
+## Execution & Validation
+
 - `process(inputs)` - Execute input sequence and generate outputs
 - Type checking via `@arg_type` decorators
 - Runtime validation of:
@@ -43,9 +45,11 @@ This project implements an embedded Domain-Specific Language (eDSL) for defining
   - Invalid symbols
 
 ### Visualization
+
 - `visualize_dot()` - Generate GraphViz DOT state diagrams
 - `visualize_table()` - Create Markdown transition tables
 - Example visualization outputs:
+
   ```dot
   digraph Mealy {
     rankdir=LR;
@@ -64,11 +68,11 @@ This project implements an embedded Domain-Specific Language (eDSL) for defining
 ## Changelog
 
 - 10.04.2025 - 0
-   - pass mypy strict type checking.
+  - pass mypy strict type checking.
 - 26.03.2025 - 2
-   - Add test coverage.
-   - Update README.
+  - Add test coverage.
+  - Update README.
 - 25.03.2025 - 1
-   - Add formal sections.
+  - Add formal sections.
 - 12.03.2025 - 0
-   - Initial
+  - Initial
