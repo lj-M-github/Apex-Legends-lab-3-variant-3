@@ -6,23 +6,23 @@ transitions, input/output handling, and visualization capabilities.
 
 ## Project Structure
 
-- `mealy_interpreter.py`  
-  - `MealyMachine` class for state machine definition
-  - State/input/output symbol management
-  - Transition rules configuration
-  - Execution engine with logging
-  - GraphViz DOT and Markdown visualization
+- `mealy_interpreter.py`
+   - `MealyMachine` class for state machine definition
+   - State/input/output symbol management
+   - Transition rules configuration
+   - Execution engine with logging
+   - GraphViz DOT and Markdown visualization
 
 - `test_mealy_interpreter.py`  
-  - State transition logic
-  - Error handling (undefined states/symbols)
-  - Input validation
-  - Visualization outputs
+   - State transition logic
+   - Error handling (undefined states/symbols)
+   - Input validation
+   - Visualization outputs
 
 - `complex_traffic_light_example.py`  
-  - Traffic light controller state machine
-  - Timer-based state transitions
-  - Visualization generation
+   - Traffic light controller state machine
+   - Timer-based state transitions
+   - Visualization generation
 
 ## Mealy Machine Definition
 
@@ -38,9 +38,9 @@ transitions, input/output handling, and visualization capabilities.
 - `process(inputs)` - Execute input sequence and generate outputs
 - Type checking via `@arg_type` decorators
 - Runtime validation of:
-  - Undefined states
-  - Missing transitions
-  - Invalid symbols
+   - Undefined states
+   - Missing transitions
+   - Invalid symbols
 
 ### Visualization
 
@@ -66,11 +66,11 @@ transitions, input/output handling, and visualization capabilities.
 ## Changelog
 
 - 10.04.2025 - 0
-  - pass mypy strict type checking.
+   - pass mypy strict type checking.
 - 26.03.2025 - 2
-  - Add test coverage.
-  - Update README.
+   - Add test coverage.
+   - Update README.
 - 25.03.2025 - 1
-  - Add formal sections.
+   - Add formal sections.
 - 12.03.2025 - 0
-  - Initial
+   - Initial
