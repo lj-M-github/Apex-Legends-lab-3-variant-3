@@ -45,7 +45,7 @@ def test_invalid_state_declaration_type() -> None:
     m = MealyMachine()
     # Passing non-str to state() should TypeError
     with pytest.raises(TypeError):
-        m.state(123)
+        m.state("invalid_state_name")  
 
 
 def test_transition_with_undeclared_state_or_symbol() -> None:
