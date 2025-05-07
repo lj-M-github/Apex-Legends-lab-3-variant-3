@@ -65,12 +65,12 @@ transitions, input/output handling, and visualization capabilities.
 
 ## Changelog
 
-- 10.04.2025 - 0
+- 07.05.2025 - 0
    - pass mypy strict type checking.
-- 26.03.2025 - 2
+- 06.05.2025 - 2
    - Add test coverage.
    - Update README.
-- 25.03.2025 - 1
+- 06.05.2025 - 1
    - Add formal sections.
-- 12.03.2025 - 0
+- 20.04.2025 - 0
    - Initial
