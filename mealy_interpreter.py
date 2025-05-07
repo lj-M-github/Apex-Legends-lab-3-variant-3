@@ -5,7 +5,6 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('MealyInterpreter')
 
-
 # Decorators for input validation
 def arg_type(index, expected_type):
     def decorator(func):
@@ -20,7 +19,6 @@ def arg_type(index, expected_type):
         return wrapper
     return decorator
 
-
 class Transition:
     """
     Represents a Mealy machine transition: (state, input) -> (next_state, output)
@@ -30,7 +28,6 @@ class Transition:
         self.input_symbol = input_symbol
         self.next_state = next_state
         self.output_symbol = output_symbol
-
 
 class MealyMachine:
     def __init__(self, name="MealyMachine"):

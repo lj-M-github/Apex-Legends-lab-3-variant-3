@@ -1,11 +1,3 @@
-# complex_traffic_light_example.py
-"""
-Example: Traffic Light Controller as a Mealy machine.
-States cycle on a timer input, emitting the appropriate signal:
-  Green --timer--> Yellow (caution)
-  Yellow --timer--> Red (stop)
-  Red --timer--> Green (go)
-"""
 from mealy_interpreter import MealyMachine
 
 # Instantiate machine
