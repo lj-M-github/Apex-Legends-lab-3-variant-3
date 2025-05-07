@@ -1,20 +1,23 @@
-from typing import Callable, Type, Any, List
+from typing import Callable, TypeVar, Any, List, ParamSpec
 
 import logging
 
-# Configure root logger for interpreter transparency
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('MealyInterpreter')
 
+P = ParamSpec("P")
+R = TypeVar("R")
+T = TypeVar("T")
 
-# Decorators for input validation
-def arg_type(index: int, expected_type: Type) -> Callable:
 
-    def decorator(func: Callable) -> Callable:
+def arg_type(index: int, expected_type: Type[T]) -> Callable[
+        [Callable[P, R]], Callable[P, R]]:
 
-        def wrapper(*args: Any, **kwargs: Any) -> Any:
+    def decorator(func: Callable[P, R]) -> Callable[P, R]:
+
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             try:
                 val = args[index]
             except IndexError:
