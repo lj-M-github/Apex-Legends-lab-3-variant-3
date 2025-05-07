@@ -1,4 +1,4 @@
-from typing import Callable, TypeVar, Any, List, ParamSpec
+from typing import Callable, TypeVar, Any, List, ParamSpec, Type
 
 import logging
 
