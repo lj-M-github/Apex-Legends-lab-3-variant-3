@@ -2,7 +2,7 @@ import pytest
 from mealy_interpreter import MealyMachine
 
 
-def test_turnstile_behavior():
+def test_turnstile_behavior() -> None:
     # Build a simple turnstile machine
     m = MealyMachine('Turnstile')
     m.state('Locked').state('Unlocked')
@@ -20,7 +20,7 @@ def test_turnstile_behavior():
     assert m.process(inputs) == expected
 
 
-def test_missing_initial_state_raises():
+def test_missing_initial_state_raises() -> None:
     m = MealyMachine('NoInit')
     m.state('A').input_symbol('x').output_symbol('y')
     # No initial state set
@@ -29,7 +29,7 @@ def test_missing_initial_state_raises():
     assert "Initial state not set" in str(ei.value)
 
 
-def test_undefined_transition_raises():
+def test_undefined_transition_raises() -> None:
     m = MealyMachine('Broken')
     m.state('S')
     m.input_symbol('a')
@@ -41,14 +41,14 @@ def test_undefined_transition_raises():
     assert "No transition from state S on input a" in str(ei.value)
 
 
-def test_invalid_state_declaration_type():
+def test_invalid_state_declaration_type() -> None:
     m = MealyMachine()
     # Passing non-str to state() should TypeError
     with pytest.raises(TypeError):
         m.state(123)
 
 
-def test_transition_with_undeclared_state_or_symbol():
+def test_transition_with_undeclared_state_or_symbol() -> None:
     m = MealyMachine('BadTrans')
     m.state('A')
     m.input_symbol('i')
@@ -67,7 +67,7 @@ def test_transition_with_undeclared_state_or_symbol():
         m.transition('A', 'x', 'B', 'z')
 
 
-def test_visualizations():
+def test_visualizations() -> None:
     m = MealyMachine('Visual')
     m.state('Start').state('End')
     m.input_symbol('go')
