@@ -1,5 +1,3 @@
-from typing import Callable, Type, Any, List
-
 import logging
 
 # Configure root logger for interpreter transparency
@@ -10,11 +8,11 @@ logger = logging.getLogger('MealyInterpreter')
 
 
 # Decorators for input validation
-def arg_type(index: int, expected_type: Type) -> Callable:
+def arg_type(index, expected_type):
 
-    def decorator(func: Callable) -> Callable:
+    def decorator(func):
 
-        def wrapper(*args: Any, **kwargs: Any) -> Any:
+        def wrapper(*args, **kwargs):
             try:
                 val = args[index]
             except IndexError:
@@ -36,8 +34,7 @@ class Transition:
     Represents a Mealy machine transition: (state, input) -> (next_state, output)
     """
 
-    def __init__(self, current_state: str, input_symbol: str,
-                 next_state: str, output_symbol: str) -> None:
+    def __init__(self, current_state, input_symbol, next_state, output_symbol):
         self.current_state = current_state
         self.input_symbol = input_symbol
         self.next_state = next_state
@@ -46,37 +43,37 @@ class Transition:
 
 class MealyMachine:
 
-    def __init__(self, name: str = "MealyMachine") -> None:
+    def __init__(self, name="MealyMachine"):
         self.name = name
-        self.states: set[str] = set()
-        self.input_symbols: set[str] = set()
-        self.output_symbols: set[str] = set()
-        self.transitions: List[Transition] = []  # list of Transition
-        self.initial_state: str | None = None
+        self.states = set()
+        self.input_symbols = set()
+        self.output_symbols = set()
+        self.transitions = []  # list of Transition
+        self.initial_state = None
 
     @arg_type(1, str)
-    def state(self, name: str) -> "MealyMachine":
+    def state(self, name):
         """Declare a state."""
         logger.debug(f"Adding state: {name}")
         self.states.add(name)
         return self
 
     @arg_type(1, str)
-    def input_symbol(self, symbol: str) -> "MealyMachine":
+    def input_symbol(self, symbol):
         """Declare an input symbol."""
         logger.debug(f"Adding input symbol: {symbol}")
         self.input_symbols.add(symbol)
         return self
 
     @arg_type(1, str)
-    def output_symbol(self, symbol: str) -> "MealyMachine":
+    def output_symbol(self, symbol):
         """Declare an output symbol."""
         logger.debug(f"Adding output symbol: {symbol}")
         self.output_symbols.add(symbol)
         return self
 
     @arg_type(1, str)
-    def set_initial(self, state: str) -> "MealyMachine":
+    def set_initial(self, state):
         """Set the initial state."""
         if state not in self.states:
             raise ValueError(f"Initial state '{state}' not declared")
@@ -84,8 +81,8 @@ class MealyMachine:
         self.initial_state = state
         return self
 
-    def transition(self, current_state: str, input_symbol: str,
-                   next_state: str, output_symbol: str) -> "MealyMachine":
+    def transition(self, current_state, input_symbol, next_state,
+                   output_symbol):
         """Add a Mealy transition."""
         # Validate arguments
         if current_state not in self.states:
@@ -103,7 +100,7 @@ class MealyMachine:
         )
         return self
 
-    def process(self, inputs: List[str]) -> List[str]:
+    def process(self, inputs):
         """
         Run the Mealy machine on a sequence of inputs and return the outputs.
         """
@@ -129,7 +126,7 @@ class MealyMachine:
         logger.info(f"Processing complete. Outputs: {outputs}")
         return outputs
 
-    def visualize_dot(self) -> str:
+    def visualize_dot(self):
         """Return GraphViz DOT representation of the machine."""
         lines = [
             "digraph Mealy {", "  rankdir=LR;", f"  label=\"{self.name}\";", ""
@@ -148,7 +145,7 @@ class MealyMachine:
         logger.debug("DOT visualization generated")
         return dot
 
-    def visualize_table(self) -> str:
+    def visualize_table(self):
         """Return markdown table of transitions."""
         header = ["Current State", "Input", "Output", "Next State"]
         rows = [[
